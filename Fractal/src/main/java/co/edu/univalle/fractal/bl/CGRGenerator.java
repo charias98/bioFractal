@@ -17,34 +17,34 @@ public class CGRGenerator {
 	public static final int RANDOM_SEED=2;
 	public static final double MID_POINT=0.5d;
 
-	public static String[] DEFAULT_LABELS={"G","T","A","C"};
-	public static String[] LABELS_GTAC={"G","T","A","C"};
-	public static String[] LABELS_GTCA={"G","T","C","A"};
-	public static String[] LABELS_GACT={"G","A","C","T"};
-	public static String[] LABELS_GATC={"G","A","T","C"};
-	public static String[] LABELS_ATGC={"A","T","G","C"};
-	public static String[] LABELS_ATCG={"A","T","C","G"};
-	public static String[] LABELS_ACTG={"A","C","T","G"};
-	public static String[] LABELS_ACGT={"A","C","G","T"};
-	public static String[] LABELS_AGCT={"A","G","C","T"};
-	public static String[] LABELS_AGTC={"A","G","T","C"};
-	public static String[] LABELS_TAGC={"T","A","G","C"};
-	public static String[] LABELS_TACG={"T","A","C","G"};
-	public static String[] LABELS_TGCA={"T","G","C","A"};
-	public static String[] LABELS_TGAC={"T","G","A","C"};
-	public static String[] LABELS_CTGA={"C","T","G","A"};
-	public static String[] LABELS_CTAG={"C","T","A","G"};
-	public static String[] LABELS_CGAT={"C","G","A","T"};
-	public static String[] LABELS_CGTA={"C","G","T","A"};
-	public static String[][] LABELS_SET={LABELS_GTAC,LABELS_GTCA,LABELS_GACT,LABELS_GATC,
+	public static char[] DEFAULT_LABELS={'G','T','A','C'};
+	public static char[] LABELS_GTAC={'G','T','A','C'};
+	public static char[] LABELS_GTCA={'G','T','C','A'};
+	public static char[] LABELS_GACT={'G','A','C','T'};
+	public static char[] LABELS_GATC={'G','A','T','C'};
+	public static char[] LABELS_ATGC={'A','T','G','C'};
+	public static char[] LABELS_ATCG={'A','T','C','G'};
+	public static char[] LABELS_ACTG={'A','C','T','G'};
+	public static char[] LABELS_ACGT={'A','C','G','T'};
+	public static char[] LABELS_AGCT={'A','G','C','T'};
+	public static char[] LABELS_AGTC={'A','G','T','C'};
+	public static char[] LABELS_TAGC={'T','A','G','C'};
+	public static char[] LABELS_TACG={'T','A','C','G'};
+	public static char[] LABELS_TGCA={'T','G','C','A'};
+	public static char[] LABELS_TGAC={'T','G','A','C'};
+	public static char[] LABELS_CTGA={'C','T','G','A'};
+	public static char[] LABELS_CTAG={'C','T','A','G'};
+	public static char[] LABELS_CGAT={'C','G','A','T'};
+	public static char[] LABELS_CGTA={'C','G','T','A'};
+	public static char[][] LABELS_SET={LABELS_GTAC,LABELS_GTCA,LABELS_GACT,LABELS_GATC,
 		LABELS_ATGC,LABELS_ATCG,LABELS_AGCT,LABELS_AGTC,
 		LABELS_TAGC,LABELS_TACG,LABELS_TGCA,LABELS_TGAC,
 		LABELS_CTGA,LABELS_CTAG,LABELS_CGAT,LABELS_CGTA};
 	public static double[][] DEFAULT_BASE_POINTS={{0d,0d},{0d,1d},{1d,0d},{1d,1d}};
-	public static String[] EXTENDED_LABELS={"A","C","G","T",
-								"R","Y","S","W",
-								"K","M","B","D",
-								"H","V","N"};
+	public static char[] EXTENDED_LABELS={'A','C','G','T',
+								'R','Y','S','W',
+								'K','M','B','D',
+								'H','V','N'};
 	public static double[][] EXTENDED_BASE_POINTS={{0d,0d},{0d,1d},{1d,0d},{1d,1d},
 				{0d,0.5d},{0.5d,1d},{0.5d,0.5d},{0.5d,0.5d},
 				{1d,0.5d},{0.5d,0d},{0.75d,0.75d},{0.75d,0.25d},
@@ -54,10 +54,10 @@ public class CGRGenerator {
 	public static int DEFAULT_DIMENTIONS=2;
 	public static int DEFAULT_LOOK_BACKWARDS=100;
 	public static int DEFAULT_SEED=STANDARD_SEED;
-	private String[] labelsPoints;
+	private char[] labelsPoints;
 	private double[][] basePoints;
 	private double factor;
-	private Map<String,Integer> labelMap;
+	private Map<Character,Integer> labelMap;
 	private double[] size={1d,1d};
 	// coordenas de los puntos generados. La primera es la candidad de puntos y la segunda es las dimensiones de cada punto
 	private String chain;
@@ -77,7 +77,7 @@ public class CGRGenerator {
 		setSeed(STANDARD_SEED);
 	}
 
-	public CGRGenerator(String[] labelsPoints, double[][] basePoints) {
+	public CGRGenerator(char[] labelsPoints, double[][] basePoints) {
 		super();
 		setLabelsPoints(labelsPoints);
 		setBasePoints(basePoints);
@@ -87,7 +87,7 @@ public class CGRGenerator {
 		setSeed(STANDARD_SEED);
 	}
 	
-	public CGRGenerator(String[] labelsPoints, double[][] basePoints, double factor) {
+	public CGRGenerator(char[] labelsPoints, double[][] basePoints, double factor) {
 		super();
 		setLabelsPoints(labelsPoints);
 		setBasePoints(basePoints);
@@ -113,7 +113,7 @@ public class CGRGenerator {
 			seed=setSeed(STANDARD_SEED);
 			for(int i=0;i<lookBackwards;i++){
 				try {
-					seed=generateNextPoint(seed, chain.substring(pos,pos+1),true);
+					seed=generateNextPoint(seed, chain.charAt(pos),true);
 				} catch (UnknownSymbol e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -130,13 +130,13 @@ public class CGRGenerator {
 		return seed;
 	}
 	
-	public String[] getLabelsPoints() {
+	public char[] getLabelsPoints() {
 		return labelsPoints;
 	}
 
-	public void setLabelsPoints(String[] labelsPoints) {
+	public void setLabelsPoints(char[] labelsPoints) {
 		this.labelsPoints = labelsPoints;
-		this.labelMap=new HashMap<String, Integer>();
+		this.labelMap=new HashMap<Character, Integer>();
 		for(int i=0;i<labelsPoints.length;i++){
 			labelMap.put(labelsPoints[i], i);
 		}
@@ -158,11 +158,11 @@ public class CGRGenerator {
 		this.factor = factor;
 	}
 
-	public Map<String, Integer> getLabelMap() {
+	public Map<Character, Integer> getLabelMap() {
 		return labelMap;
 	}
 
-	public void setLabelMap(Map<String, Integer> labelMap) {
+	public void setLabelMap(Map<Character, Integer> labelMap) {
 		this.labelMap = labelMap;
 	}
 
@@ -198,7 +198,7 @@ public class CGRGenerator {
 		this.dimensions = dimensions;
 	}
 
-	public double[] generateNextPoint(double[] px_1,String label,boolean ignoreUnknown) throws UnknownSymbol{
+	public double[] generateNextPoint(double[] px_1,char label,boolean ignoreUnknown) throws UnknownSymbol{
 		double[] px=new double[px_1.length];
 		Integer pos;
 		for(int i=0;i<px_1.length;i++){
@@ -248,7 +248,7 @@ public class CGRGenerator {
 		return string;
 	}
 	*/
-	public String getLabelFromPoint(double[] coordinates){
+	public Character getLabelFromPoint(double[] coordinates){
 		double[] reference=new double[coordinates.length];
 		for (int i=0;i<coordinates.length;i++) {
 			reference[i] = coordinates[i] < 0.5d ? 0d : 1d;

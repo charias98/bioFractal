@@ -1,12 +1,13 @@
 package co.edu.univalle.fractal.bl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.charias.utils.MatrixUtils;
+import co.edu.univalle.fractal.model.UnknownSymbol;
+
 
 public class TestCGRGeneratorJUnit {
 	
@@ -77,5 +78,16 @@ public class TestCGRGeneratorJUnit {
 		System.out.println(res[0]);
 		System.out.println(res[1]);
 	}
+	
+	@Test
+	public void testNValue() throws UnknownSymbol {
+		CGRGenerator cg=new CGRGenerator();
+		double[] px_1=new double[] {0.5d,0.5d};
+		char label='N';
+		double[]res;
+		res=cg.generateNextPoint(px_1, label, true);
+		assertNull(res);
+	}
+	
 
 }

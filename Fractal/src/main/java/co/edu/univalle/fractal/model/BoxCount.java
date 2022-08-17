@@ -4,6 +4,18 @@ import org.apache.log4j.Logger;
 
 public class BoxCount {
 	
+	public int getBoxesUsed() {
+		return boxesUsed;
+	}
+	public void setBoxesUsed(int boxesUsed) {
+		this.boxesUsed = boxesUsed;
+	}
+	public int getSegments() {
+		return segments;
+	}
+	public void setSegments(int segments) {
+		this.segments = segments;
+	}
 	private static Logger logger=Logger.getLogger(BoxCount.class.getClass());
 	
 	int[][] clusters;
@@ -65,6 +77,12 @@ public class BoxCount {
 		totalData=0;
 	}
 	
+	public double getSegmentsSize() {
+		return segmentsSize;
+	}
+	public void setSegmentsSize(double segmentsSize) {
+		this.segmentsSize = segmentsSize;
+	}
 	public void addPoint(double[] point){
 		if(point!=null){
 			int x=(int)(point[0]/segmentsSize);

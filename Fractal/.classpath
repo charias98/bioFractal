@@ -35,6 +35,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Cgai/Documentos/Dropbox/myjars/CGAIUtils.jar"/>
+	<classpathentry kind="lib" path="E:/Cgai/Documentos/Dropbox/myjars/CGAIUtilsNew.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

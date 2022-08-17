@@ -83,7 +83,7 @@ public class BoxCountSet {
 	private int addPoints(double[][] points, CGRGenerator cgr, BoxCount[] boxCounts, int totalData, String text,
 			int i) {
 		try {
-			points[1]=cgr.generateNextPoint(points[0], text.substring(i, i+1), true);
+			points[1]=cgr.generateNextPoint(points[0], text.charAt(i), true);
 			if(points[1]!=null){
 			//	System.out.println("P:"+points[1][0]+" "+points[1][1]);
 			for (BoxCount boxCount : boxCounts) {

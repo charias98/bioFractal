@@ -40,7 +40,6 @@ public class BoxCMultiFractalDimension implements IMultiFractalCalculator {
 
 	
 	private MultifractalDimension getMFD(BoxCountSet boxCountSet, int[] segments,int [] qs, int size) {
-	double[][] countingBySize=new double[2][segments.length];
 	MultifractalDimension md=new MultifractalDimension(qs,segments,size);
 	for(int i=0;i<segments.length;i++){
         double[][] proportionalMatrix=MatrixUtils.proportionalMatrix(boxCountSet.getBoxCounts()[i].getClusters(),

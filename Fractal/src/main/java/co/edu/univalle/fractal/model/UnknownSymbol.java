@@ -6,18 +6,18 @@ public class UnknownSymbol extends Exception {
 	 * 
 	 */
 	private static final long serialVersionUID = -6114252415768042103L;
-	private String symbol;
+	private char symbol;
 
-	public UnknownSymbol(String symbol) {
+	public UnknownSymbol(char symbol) {
 		super();
 		this.symbol = symbol;
 	}
 
-	public String getSymbol() {
+	public char getSymbol() {
 		return symbol;
 	}
 
-	public void setSymbol(String symbol) {
+	public void setSymbol(char symbol) {
 		this.symbol = symbol;
 	}
 	
